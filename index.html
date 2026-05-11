@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKU Causality Engine Group | AI-Powered Returns Intelligence Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+:root{
+  /* SKU Causality Engine Group Brand  Deep Navy + Crimson/Red */
+  --red:#00BFFF;
+  --red-light:#00BFFF;
+  --red-dim:#0099CC;
+  --red-dark:#0077AA;
+
+  /* Backgrounds */
+  --bg-black:#FFFFFF;
+  --bg-deep:#F5FBFF;
+  --bg-dark:#EDF8FF;
+  --bg-card:#FFFFFF;
+
+  /* Navy Accents */
+  --navy:#0B1C3E;
+  --navy-mid:#0F2450;
+  --navy-light:#1A3166;
+  --navy-bright:#1E3A8A;
+  --blue-accent:#1A3166;
+  --blue-soft:#1E3A8A;
+  --blue-glow:rgba(30,58,138,0.08);
+
+  /* Light Theme Surfaces */
+  --light-bg:#EDF8FF;
+  --light-card:#FFFFFF;
+  --light-border:#CCF0FF;
+  --text-dark:#0D0A1E;
+  --text-mid:#1A0F1F;
+  --text-muted:#1A4A6B;
+
+  /* Text roles */
+  --white:#FFFFFF;
+  --txt-secondary:#374151;
+  --txt-dim:#6B7280;
+
+  /* UI Cards */
+  --card-bg:#FFFFFF;
+  --card-border:rgba(0,191,255,0.14);
+  --navy-card:#FFFFFF;
+  --navy-border:rgba(30,58,138,0.18);
+
+  --nav-h:72px;
+  --max-w:1200px;
+  --font:'Plus Jakarta Sans',sans-serif;
+  --display:'Sora',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --ease:cubic-bezier(0.4,0,0.2,1);
+  --ease-out:cubic-bezier(0,0,0.2,1);
+}
+
+body{font-family:var(--font);color:var(--text-dark);background:var(--bg-black);overflow-x:hidden;}
+
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#EDF8FF;}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px;}
+
+img{display:block;max-width:100%;}
+
+/* ─── NAVBAR ─────────────────────────────────────────── */
+.navbar{
+  position:fixed;top:0;left:0;width:100%;height:var(--nav-h);
+  background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,191,255,0.1);
+  z-index:1000;display:flex;align-items:center;
+  padding:0 clamp(16px,5vw,60px);
+  justify-content:space-between;
+  transition:border-color 0.3s;
+  box-shadow:0 1px 20px rgba(0,191,255,0.06);
+}
+.nav-logo{
+  font-family:var(--display);font-size:18px;font-weight:800;
+  color:var(--navy);letter-spacing:-0.3px;
+  display:flex;align-items:center;gap:12px;
+  cursor:pointer;text-decoration:none;flex-shrink:0;
+}
+.nav-logo-icon{
+  width:40px;height:40px;
+  background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,191,255,0.35);
+}
+.nav-logo-icon svg{width:22px;height:22px;}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1;}
+.nav-logo-text span{font-size:10px;font-family:var(--mono);font-weight:500;color:var(--txt-dim);letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
+.nav-links li button{
+  background:none;border:none;
+  color:var(--txt-dim);
+  font-size:11px;font-weight:600;
+  padding:8px 16px;border-radius:7px;
+  transition:all 0.22s var(--ease);
+  cursor:pointer;font-family:var(--mono);
+  letter-spacing:0.8px;text-transform:uppercase;
+  position:relative;white-space:nowrap;
+}
+.nav-links li button:hover{color:var(--red);background:rgba(0,191,255,0.06);}
+.nav-links li button.active{color:var(--red);background:rgba(0,191,255,0.07);}
+.nav-links li button.active::after{
+  content:'';position:absolute;bottom:5px;left:50%;
+  transform:translateX(-50%);width:14px;height:2px;
+  background:var(--red);border-radius:2px;
+}
+
+.nav-right{display:flex;align-items:center;gap:10px;}
+.btn-demo-nav{
+  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  color:var(--white);border:none;padding:9px 20px;border-radius:8px;
+  font-size:11px;font-weight:700;cursor:pointer;
+  transition:all 0.22s;font-family:var(--mono);
+  letter-spacing:0.8px;text-transform:uppercase;white-space:nowrap;
+  box-shadow:0 2px 10px rgba(0,191,255,0.3);
+}
+.btn-demo-nav:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,191,255,0.5);}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;flex-shrink:0;}
+.hamburger span{width:22px;height:2px;background:var(--red);border-radius:2px;transition:0.3s;display:block;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.mobile-nav{
+  display:none;position:fixed;top:var(--nav-h);left:0;width:100%;
+  background:rgba(255,255,255,0.99);backdrop-filter:blur(20px);
+  padding:12px 20px 20px;flex-direction:column;gap:2px;
+  z-index:999;border-bottom:1px solid rgba(0,191,255,0.1);
+  animation:slideDown 0.25s var(--ease-out);
+}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);}}
+.mobile-nav.open{display:flex;}
+.mobile-nav button{
+  background:none;border:none;color:var(--txt-dim);
+  font-size:13px;font-weight:600;padding:13px 12px;
+  border-bottom:1px solid rgba(0,191,255,0.07);
+  cursor:pointer;font-family:var(--mono);text-align:left;
+  text-transform:uppercase;letter-spacing:1px;
+  transition:color 0.2s,background 0.2s;border-radius:6px;
+}
+.mobile-nav button:hover{color:var(--red);background:rgba(0,191,255,0.05);}
+.mobile-nav .mob-cta{
+  margin-top:8px;background:linear-gradient(135deg,var(--red),var(--red-dark));
+  color:var(--white);border:none;padding:13px;
+  border-radius:8px;font-weight:700;font-size:12px;
+  letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+  font-family:var(--mono);
+}
+
+/* ─── PAGE SYSTEM ─────────────────────────────────────── */
+.page{display:none;min-height:100vh;padding-top:var(--nav-h);}
+.page.active{display:block;animation:pgIn 0.35s var(--ease);}
+@keyframes pgIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* ─── SECTION COMMONS ─────────────────────────────────── */
+.label-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:10px;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--red);margin-bottom:14px;
+}
+.label-tag::before{content:'';width:20px;height:1px;background:var(--red);}
+
+.label-tag-blue{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:10px;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--blue-soft);margin-bottom:14px;
+}
+.label-tag-blue::before{content:'';width:20px;height:1px;background:var(--blue-soft);}
+
+.section-h2{
+  font-family:var(--display);font-size:clamp(28px,3.5vw,52px);
+  font-weight:800;line-height:1.1;letter-spacing:-0.8px;
+  margin-bottom:10px;
+}
+.section-h2.green{color:var(--red);}
+.section-h2.dark{color:var(--text-dark);}
+.section-h2.white{color:var(--text-dark);}
+.section-h2.navy-txt{color:var(--navy-light);}
+
+.section-divider{width:56px;height:3px;margin:16px 0 28px;border-radius:2px;}
+.divider-green{background:linear-gradient(90deg,var(--red),transparent);}
+.divider-blue{background:linear-gradient(90deg,var(--blue-accent),transparent);}
+.divider-center{margin:16px auto 28px;}
+
+.para-dark{color:var(--txt-secondary);line-height:1.85;font-size:17px;}
+.para-light{color:var(--text-mid);line-height:1.85;font-size:17px;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:0 clamp(16px,4vw,60px);}
+
+/* ─── BUTTONS ─────────────────────────────────────────── */
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  color:var(--white);padding:13px 28px;border-radius:8px;
+  text-decoration:none;font-weight:700;font-size:12px;
+  letter-spacing:0.8px;text-transform:uppercase;
+  transition:all 0.25s;font-family:var(--mono);border:none;cursor:pointer;
+  box-shadow:0 4px 16px rgba(0,191,255,0.25);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,191,255,0.4);}
+
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1.5px solid rgba(0,191,255,0.45);color:var(--red);
+  padding:12px 28px;border-radius:8px;text-decoration:none;
+  font-weight:700;font-size:12px;letter-spacing:0.8px;
+  text-transform:uppercase;transition:all 0.25s;
+  font-family:var(--mono);background:none;cursor:pointer;
+}
+.btn-secondary:hover{background:rgba(0,191,255,0.06);border-color:var(--red);}
+
+.btn-blue{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--blue-accent);color:var(--white);
+  padding:12px 28px;border-radius:8px;
+  font-weight:700;font-size:12px;letter-spacing:0.8px;
+  text-transform:uppercase;transition:all 0.25s;
+  font-family:var(--mono);border:none;cursor:pointer;
+  box-shadow:0 4px 16px rgba(30,58,138,0.3);
+}
+.btn-blue:hover{transform:translateY(-2px);background:#1E3A8A;box-shadow:0 8px 28px rgba(30,58,138,0.45);}
+
+/* ─── STATUS INDICATORS ─────────────────────────────── */
+.risk-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 10px;border-radius:20px;
+  font-size:10px;font-weight:700;font-family:var(--mono);letter-spacing:0.5px;
+}
+.risk-green{background:rgba(0,191,255,0.08);color:var(--red);border:1px solid rgba(0,191,255,0.25);}
+.risk-amber{background:rgba(245,158,11,0.08);color:#D97706;border:1px solid rgba(245,158,11,0.22);}
+.risk-red{background:rgba(239,68,68,0.08);color:#DC2626;border:1px solid rgba(239,68,68,0.2);}
+.risk-blue{background:rgba(30,58,138,0.08);color:var(--blue-soft);border:1px solid rgba(30,58,138,0.22);}
+.risk-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0;}
+
+/* ─── HERO MINI STATS ───────────────────────── */
+.hero-mini-stats{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+.hero-mini-card{
+  background:rgba(0,191,255,0.07);
+  border:1px solid rgba(0,191,255,0.12);
+  border-radius:12px;padding:14px 18px;min-width:150px;
+}
+.hero-mini-card strong{
+  display:block;color:var(--red);font-size:22px;font-weight:800;
+  margin-bottom:4px;font-family:var(--display);
+}
+.hero-mini-card span{color:var(--txt-secondary);font-size:12px;line-height:1.5;}
+
+/* ─── DASHBOARD TOP ───────────────────────── */
+.score-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:20px;}
+.dashboard-title{color:var(--text-dark);font-size:20px;font-weight:800;margin-top:8px;line-height:1.3;}
+.live-dot-wrap{display:flex;align-items:center;gap:7px;color:var(--red);font-size:10px;font-family:var(--mono);letter-spacing:1.5px;}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse-dot 1.6s ease-in-out infinite;}
+
+@media (max-width:900px){
+  .hero-mini-stats{gap:12px;}
+  .hero-mini-card{flex:1 1 calc(50% - 12px);min-width:unset;}
+}
+@media (max-width:600px){
+  .hero-mini-stats{flex-direction:column;}
+  .hero-mini-card{width:100%;}
+  .dashboard-title{font-size:18px;}
+}
+
+/* ─── HERO ─────────────────────────────────────────────── */
+.hero{
+  position:relative;
+  padding:clamp(80px,12vw,120px) 0 clamp(60px,8vw,90px);
+  background:
+    radial-gradient(circle at top right, rgba(0,191,255,0.10), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(0,119,170,0.08), transparent 45%),
+    linear-gradient(160deg,#F0FAFF 0%,#E6F7FF 50%,#D6F2FF 100%);
+  overflow:hidden;
+  min-height:calc(100vh - var(--nav-h));
+  display:flex;align-items:center;
+}
+.hero-grid-bg{display:none;}
+.hero-noise{display:none;}
+.hero-glow-1,.hero-glow-2{display:none;}
+
+.hero-inner{
+  max-width:var(--max-w);margin:0 auto;
+  padding:0 clamp(16px,4vw,60px);
+  display:grid;grid-template-columns:1.15fr 0.85fr;
+  gap:clamp(30px,5vw,80px);align-items:center;
+  position:relative;z-index:1;width:100%;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(0,191,255,0.07);
+  border:1px solid rgba(0,191,255,0.22);
+  color:var(--red);font-size:10px;font-weight:700;
+  letter-spacing:2.5px;padding:6px 14px 6px 10px;
+  border-radius:4px;text-transform:uppercase;
+  margin-bottom:20px;font-family:var(--mono);
+}
+.hero-badge-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--red);
+  animation:pulse-dot 1.6s ease-in-out infinite;flex-shrink:0;
+}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.35;transform:scale(0.55);}}
+
+.hero h1{
+  font-family:var(--display);
+  font-size:clamp(38px,4.5vw,68px);
+  line-height:1.06;font-weight:800;
+  letter-spacing:-1.5px;color:var(--text-dark);
+  margin-bottom:10px;
+}
+.hero h1 .green{color:var(--red);}
+.hero h1 .blue{color:var(--blue-soft);}
+
+.hero-rule{width:64px;height:3px;background:linear-gradient(90deg,var(--red),var(--blue-soft));border-radius:2px;margin:18px 0 22px;}
+.hero-body{color:var(--txt-secondary);font-size:18px;line-height:1.8;margin-bottom:32px;max-width:560px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+
+/* ─── HERO DASHBOARD ─────────────────────────────────── */
+.hero-dashboard{
+  background:#FFFFFF;border:1px solid rgba(0,191,255,0.1);
+  border-radius:20px;padding:22px;
+  box-shadow:0 8px 40px rgba(0,191,255,0.08),0 2px 12px rgba(0,0,0,0.05);
+  position:relative;
+}
+.hero-dashboard::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--red),var(--blue-soft),transparent);
+  border-radius:20px 20px 0 0;
+}
+.dash-row{display:flex;gap:10px;margin-bottom:14px;}
+.dash-metric{
+  flex:1;background:rgba(0,191,255,0.04);
+  border:1px solid rgba(0,191,255,0.09);border-radius:10px;
+  padding:12px;text-align:center;
+}
+.dash-metric-val{font-family:var(--display);font-size:22px;font-weight:800;color:var(--red);}
+.dash-metric-lbl{font-size:10px;color:var(--txt-dim);font-family:var(--mono);letter-spacing:0.5px;margin-top:3px;}
+.dash-bar-wrap{margin-bottom:10px;}
+.dash-bar-label{display:flex;justify-content:space-between;font-size:11px;font-family:var(--mono);color:var(--txt-dim);margin-bottom:4px;}
+.dash-bar-track{height:7px;background:rgba(0,191,255,0.08);border-radius:4px;overflow:hidden;}
+.dash-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--red),var(--red-light));}
+.dash-navy-fill{background:linear-gradient(90deg,var(--navy),var(--navy-light));}
+.dash-tag-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px;}
+.dash-tag{
+  font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:1px;
+  padding:4px 10px;border-radius:4px;text-transform:uppercase;
+}
+.dash-tag-red{background:rgba(0,191,255,0.08);color:var(--red);border:1px solid rgba(0,191,255,0.18);}
+.dash-tag-navy{background:rgba(30,58,138,0.07);color:var(--navy-light);border:1px solid rgba(30,58,138,0.16);}
+
+/* ─── STATS STRIP ─────────────────────────────────────── */
+.stats-section{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);
+  padding:clamp(40px,6vw,60px) 0;
+}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.stat-card{
+  text-align:center;padding:clamp(20px,3vw,32px) 20px;
+  border-right:1px solid rgba(255,255,255,0.06);
+}
+.stat-card:last-child{border-right:none;}
+.stat-num{
+  font-family:var(--display);font-size:clamp(28px,3.5vw,44px);
+  font-weight:800;color:#FFFFFF;letter-spacing:-1px;margin-bottom:8px;
+}
+.stat-num span{color:var(--red);}
+.stat-lbl{color:rgba(255,255,255,0.7);font-size:13px;line-height:1.5;margin-bottom:6px;}
+.stat-src{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:1.5px;text-transform:uppercase;}
+
+/* ─── SECTION DARK ────────────────────────────────────── */
+.section-dark{
+  background:var(--bg-deep);
+  padding:clamp(80px,12vw,120px) 0 clamp(60px,8vw,100px);
+  border-top:1px solid rgba(0,191,255,0.06);
+}
+
+/* ─── PROCESS GRID ────────────────────────────────────── */
+.process-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(16px,2.5vw,24px);margin-top:52px;
+  position:relative;
+}
+/* Connector line between cards */
+.process-grid::before{
+  content:'';position:absolute;
+  top:54px;left:calc(12.5% + 10px);right:calc(12.5% + 10px);
+  height:1px;
+  background:linear-gradient(90deg,
+    rgba(0,191,255,0.0) 0%,
+    rgba(0,191,255,0.25) 15%,
+    rgba(30,58,138,0.25) 50%,
+    rgba(0,191,255,0.25) 85%,
+    rgba(0,191,255,0.0) 100%
+  );
+  pointer-events:none;z-index:0;
+}
+
+.process-card{
+  background:#FFFFFF;
+  border:1px solid rgba(0,191,255,0.09);
+  border-radius:20px;
+  overflow:hidden;
+  transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.3s,border-color 0.3s;
+  box-shadow:0 4px 20px rgba(0,191,255,0.06),0 1px 4px rgba(0,0,0,0.04);
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;
+}
+.process-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--red),var(--blue-soft));
+  opacity:0;transition:opacity 0.3s;border-radius:0 0 20px 20px;
+}
+.process-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(0,191,255,0.18);
+  box-shadow:0 20px 56px rgba(0,191,255,0.13),0 4px 12px rgba(0,0,0,0.06);
+}
+.process-card:hover::after{opacity:1;}
+
+/* Step badge at top */
+.process-step-badge{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 22px 0;
+}
+.process-num-circle{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:13px;font-weight:700;color:#fff;
+  box-shadow:0 4px 14px rgba(0,191,255,0.4);
+  flex-shrink:0;
+  transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.3s;
+}
+.process-card:hover .process-num-circle{
+  transform:scale(1.12) rotate(-5deg);
+  box-shadow:0 8px 24px rgba(0,191,255,0.5);
+}
+.process-step-icon{
+  width:38px;height:38px;border-radius:10px;
+  background:rgba(0,191,255,0.06);border:1px solid rgba(0,191,255,0.12);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;transition:background 0.3s,transform 0.3s;
+}
+.process-card:hover .process-step-icon{
+  background:rgba(0,191,255,0.1);transform:rotate(8deg) scale(1.08);
+}
+
+/* Image area */
+.process-img-wrap{
+  width:100%;height:160px;overflow:hidden;
+  margin:18px 0 0;
+  background:linear-gradient(135deg,rgba(0,191,255,0.07),rgba(30,58,138,0.07));
+  position:relative;
+}
+.process-img-wrap::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(255,255,255,0.12) 100%);
+  pointer-events:none;
+}
+.process-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);}
+.process-card:hover .process-img-wrap img{transform:scale(1.07);}
+
+/* Content area */
+.process-content{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column;}
+.process-num{
+  font-family:var(--mono);font-size:9px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--red);margin-bottom:10px;
+  display:none; /* hidden — replaced by circle badge */
+}
+.process-card h3{
+  font-family:var(--display);font-size:17px;font-weight:800;
+  color:var(--text-dark);margin-bottom:10px;line-height:1.25;
+}
+.process-card p{
+  color:var(--txt-secondary);font-size:13px;line-height:1.7;
+  flex:1;
+}
+.process-step-label{
+  font-family:var(--mono);font-size:9px;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--txt-dim);
+}
+
+/* Arrow between cards on desktop */
+@media(min-width:901px){
+  .process-arrow{
+    display:flex;align-items:center;justify-content:center;
+    position:absolute;top:54px;
+    width:24px;height:24px;
+    background:#FFFFFF;border:1px solid rgba(0,191,255,0.18);
+    border-radius:50%;
+    font-size:10px;color:var(--red);
+    box-shadow:0 2px 8px rgba(0,191,255,0.12);
+    transform:translate(-50%,-50%);
+    z-index:2;
+  }
+}
+@media(max-width:900px){.process-arrow{display:none;}}
+
+
+/* ─── PLATFORM GRID ───────────────────────────────────── */
+.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,22px);}
+.platform-card{
+  background:#FFFFFF;border:1px solid rgba(0,191,255,0.1);border-radius:16px;
+  overflow:hidden;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;
+  box-shadow:0 2px 12px rgba(0,191,255,0.05);
+}
+.platform-card:hover{transform:translateY(-4px);border-color:rgba(0,191,255,0.22);box-shadow:0 14px 40px rgba(0,191,255,0.1);}
+.platform-img-wrap,.platform-card-img{
+  width:100%;aspect-ratio:16/9;overflow:hidden;
+  background:linear-gradient(135deg,rgba(0,191,255,0.07),rgba(30,58,138,0.07));
+}
+.platform-img-wrap img,.platform-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;}
+.platform-card:hover .platform-img-wrap img,.platform-card:hover .platform-card-img img{transform:scale(1.04);}
+.platform-card .inner{padding:20px;}
+.element-badge{
+  display:inline-block;font-family:var(--mono);font-size:9px;
+  font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--red);background:rgba(0,191,255,0.07);
+  border:1px solid rgba(0,191,255,0.18);
+  padding:3px 10px;border-radius:4px;margin-bottom:12px;
+}
+.platform-card h3{font-family:var(--display);font-size:19px;font-weight:800;color:var(--text-dark);margin-bottom:10px;line-height:1.2;}
+.platform-card p{color:var(--txt-secondary);font-size:13.5px;line-height:1.65;margin-bottom:14px;}
+.more-text{
+  color:var(--txt-secondary);font-size:13px;line-height:1.65;
+  max-height:0;overflow:hidden;
+  transition:max-height 0.35s var(--ease),padding 0.35s;
+}
+.platform-card.open .more-text{max-height:300px;padding-bottom:12px;}
+.expand-btn{
+  background:none;border:1px solid rgba(0,191,255,0.2);
+  color:var(--red);padding:7px 18px;border-radius:6px;
+  font-family:var(--mono);font-size:10px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+  transition:all 0.25s;
+}
+.expand-btn:hover{background:rgba(0,191,255,0.06);border-color:rgba(0,191,255,0.35);}
+.platform-sub{max-width:720px;margin-bottom:36px;}
+
+/* ─── ABOUT ─────────────────────────────────────────────── */
+.about-hero{background:#FFFFFF;padding:clamp(80px,12vw,120px) 0 clamp(60px,8vw,100px);}
+.about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:clamp(40px,6vw,80px);align-items:start;}
+.about-para{color:var(--txt-secondary);font-size:16px;line-height:1.8;margin-bottom:18px;}
+.about-tags{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:28px;}
+.feature-tag{
+  background:rgba(0,191,255,0.05);border:1px solid rgba(0,191,255,0.15);
+  color:var(--txt-secondary);font-size:12px;
+  padding:10px 14px;border-radius:8px;font-weight:500;
+  transition:border-color 0.2s,color 0.2s;
+}
+.feature-tag:hover{border-color:rgba(0,191,255,0.3);color:var(--red);}
+.founder-card{
+  background:#FFFFFF;
+  border:1px solid rgba(0,191,255,0.12);border-radius:16px;
+  padding:28px;margin-bottom:24px;position:relative;overflow:hidden;
+  box-shadow:0 2px 14px rgba(0,191,255,0.06);
+}
+.founder-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--red),var(--blue-soft),transparent);
+}
+.founder-tag{
+  font-family:var(--mono);font-size:9px;color:var(--red);
+  letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.founder-card h4{font-family:var(--display);color:var(--text-dark);font-size:22px;font-weight:800;margin-bottom:4px;}
+.founder-title{font-family:var(--mono);font-size:11px;color:var(--txt-dim);letter-spacing:1px;margin-bottom:18px;text-transform:uppercase;}
+.founder-card p{color:var(--txt-secondary);font-size:14px;line-height:1.75;margin-bottom:14px;}
+
+/* ─── KPI ROW ─────────────────────────────────────────── */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,20px);margin-bottom:36px;}
+.kpi-card{
+  background:#FFFFFF;
+  border:1px solid rgba(0,191,255,0.12);border-radius:12px;
+  padding:clamp(18px,2.5vw,28px);text-align:center;
+  box-shadow:0 2px 10px rgba(0,191,255,0.05);
+}
+.kpi-num{font-family:var(--display);font-size:clamp(26px,3vw,38px);font-weight:800;color:var(--red);letter-spacing:-1px;margin-bottom:6px;}
+.kpi-lbl{color:var(--txt-secondary);font-size:12px;line-height:1.45;}
+
+/* ─── MARKET ─────────────────────────────────────────── */
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.5vw,28px);margin-bottom:28px;}
+.chart-card{
+  background:#FFFFFF;border:1px solid rgba(0,191,255,0.1);
+  border-radius:14px;padding:22px;box-shadow:0 2px 10px rgba(0,191,255,0.04);
+}
+.chart-card-full{
+  background:#FFFFFF;border:1px solid rgba(0,191,255,0.1);
+  border-radius:14px;padding:22px;margin-bottom:28px;box-shadow:0 2px 10px rgba(0,191,255,0.04);
+}
+.chart-title{font-family:var(--display);color:var(--text-dark);font-size:16px;font-weight:700;margin-bottom:4px;}
+.chart-sub{color:var(--txt-dim);font-size:12px;font-family:var(--mono);margin-bottom:16px;}
+.chart-wrap{height:240px;position:relative;}
+.chart-wrap-lg{height:360px;position:relative;}
+
+.market-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px);margin-bottom:36px;}
+.mkt-card{
+  background:#FFFFFF;
+  border:1px solid rgba(30,58,138,0.15);border-radius:12px;padding:20px;
+  box-shadow:0 2px 10px rgba(30,58,138,0.05);
+}
+.mkt-num{font-family:var(--display);font-size:clamp(28px,3vw,40px);font-weight:800;color:var(--blue-soft);letter-spacing:-1px;margin-bottom:6px;}
+.mkt-lbl{color:var(--txt-secondary);font-size:13px;line-height:1.5;}
+.mkt-source{font-family:var(--mono);font-size:9px;color:var(--txt-dim);letter-spacing:1px;text-transform:uppercase;margin-top:8px;}
+
+/* ─── PRICING ─────────────────────────────────────────── */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,28px);margin-bottom:56px;}
+.price-card{
+  background:#FFFFFF;border:1px solid rgba(0,191,255,0.1);
+  border-radius:16px;padding:30px;position:relative;
+  transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s;
+  box-shadow:0 2px 14px rgba(0,191,255,0.05);
+}
+.price-card:hover{transform:translateY(-4px);border-color:rgba(0,191,255,0.22);box-shadow:0 12px 40px rgba(0,191,255,0.1);}
+.price-card.featured{
+  border-color:var(--red);
+  box-shadow:0 0 0 1px rgba(0,191,255,0.15),0 16px 50px rgba(0,191,255,0.12);
+  background:linear-gradient(145deg,#F5FBFF,#E6F7FF);
+}
+.price-card.featured::before{
+  content:'MOST POPULAR';position:absolute;top:-1px;left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  color:var(--white);font-size:9px;font-weight:700;
+  font-family:var(--mono);letter-spacing:2px;
+  padding:4px 16px;border-radius:0 0 8px 8px;
+}
+.price-tier{font-family:var(--mono);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
+.price-card h3{font-family:var(--display);color:var(--text-dark);font-size:22px;font-weight:800;margin-bottom:10px;}
+.price-card .desc{color:var(--txt-secondary);font-size:13px;line-height:1.6;margin-bottom:20px;}
+.price-amount{font-family:var(--display);font-size:clamp(36px,4vw,52px);font-weight:800;color:var(--text-dark);letter-spacing:-2px;}
+.price-period{font-family:var(--mono);font-size:10px;color:var(--txt-dim);letter-spacing:1px;margin-bottom:24px;margin-top:4px;}
+.price-divider{height:1px;background:rgba(0,191,255,0.08);margin-bottom:22px;}
+.price-features{list-style:none;margin-bottom:28px;}
+.price-features li{
+  color:var(--txt-secondary);font-size:13.5px;padding:7px 0;
+  border-bottom:1px solid rgba(0,191,255,0.06);
+  display:flex;align-items:center;gap:10px;
+}
+.price-features li:last-child{border-bottom:none;}
+.chk{color:var(--red);font-weight:700;flex-shrink:0;}
+.price-btn{
+  width:100%;padding:13px;border-radius:8px;
+  font-family:var(--mono);font-size:12px;font-weight:700;
+  letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;transition:all 0.25s;border:none;
+}
+.price-btn-outline{background:none;border:1.5px solid rgba(0,191,255,0.3);color:var(--red);}
+.price-btn-outline:hover{background:rgba(0,191,255,0.05);}
+.price-btn-green{
+  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  color:var(--white);box-shadow:0 4px 16px rgba(0,191,255,0.25);
+}
+.price-btn-green:hover{box-shadow:0 8px 28px rgba(0,191,255,0.4);transform:translateY(-1px);}
+
+/* ─── CONTACT ─────────────────────────────────────────── */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,6vw,80px);align-items:start;}
+.contact-info-card{
+  background:#FFFFFF;border:1px solid rgba(0,191,255,0.1);
+  border-radius:16px;padding:28px;margin-bottom:22px;
+  box-shadow:0 2px 12px rgba(0,191,255,0.05);
+  display:flex;align-items:flex-start;gap:14px;
+}
+.contact-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(0,191,255,0.07);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+}
+.contact-info-card h4{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text-dark);margin-bottom:4px;}
+.contact-info-card p{color:var(--txt-secondary);font-size:13.5px;line-height:1.6;}
+.form-group{margin-bottom:18px;}
+.form-label{display:block;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dark);margin-bottom:7px;}
+.form-ctrl{
+  width:100%;padding:12px 16px;border-radius:8px;
+  border:1.5px solid rgba(0,191,255,0.18);background:#FFFFFF;
+  font-family:var(--font);font-size:14px;color:var(--text-dark);
+  transition:border-color 0.22s,box-shadow 0.22s;outline:none;
+}
+.form-ctrl:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(0,191,255,0.08);}
+.form-ctrl.ta{resize:vertical;min-height:110px;}
+.form-submit{
+  width:100%;padding:14px;border-radius:8px;
+  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  color:var(--white);border:none;
+  font-family:var(--mono);font-size:12px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+  box-shadow:0 4px 16px rgba(0,191,255,0.28);transition:all 0.25s;
+}
+.form-submit:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(0,191,255,0.42);}
+#formSuccess{
+  display:none;padding:18px;border-radius:10px;
+  background:rgba(0,191,255,0.06);border:1px solid rgba(0,191,255,0.2);
+  color:var(--red);font-weight:700;text-align:center;margin-bottom:16px;
+  font-family:var(--mono);font-size:13px;
+}
+
+/* ─── FAQ ─────────────────────────────────────────────── */
+.faq-item{
+  background:#FFFFFF;border:1px solid rgba(0,191,255,0.1);
+  border-radius:12px;margin-bottom:10px;overflow:hidden;
+  box-shadow:0 1px 8px rgba(0,191,255,0.04);
+}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 22px;cursor:pointer;
+  transition:background 0.2s;
+}
+.faq-q:hover{background:rgba(0,191,255,0.02);}
+.faq-q h4{font-family:var(--display);font-size:16px;font-weight:700;color:var(--text-dark);line-height:1.3;padding-right:20px;}
+.faq-icon{font-size:18px;color:var(--red);font-weight:700;flex-shrink:0;transition:transform 0.25s;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-body{
+  max-height:0;overflow:hidden;
+  color:var(--txt-secondary);font-size:14.5px;line-height:1.75;
+  transition:max-height 0.35s var(--ease),padding 0.35s;
+}
+.faq-item.open .faq-body{max-height:300px;padding:0 22px 20px;}
+
+/* ─── IMPLEMENTATION TIMELINE ─────────────────────────── */
+.impl-timeline{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;margin-top:44px;position:relative;
+}
+.impl-step{display:flex;flex-direction:column;align-items:stretch;position:relative;}
+.impl-dot-col{display:none;}
+.impl-timeline::before{
+  content:'';position:absolute;
+  top:18px;left:calc(12.5% + 14px);right:calc(12.5% + 14px);height:2px;
+  background:linear-gradient(90deg,var(--red),var(--blue-soft),var(--red),var(--blue-soft));
+  opacity:0.25;z-index:0;
+}
+.impl-card{
+  background:#FFFFFF;border:1px solid rgba(0,191,255,0.1);
+  border-radius:14px;padding:20px 18px 18px;
+  box-shadow:0 2px 12px rgba(0,191,255,0.05);
+  position:relative;margin:0 6px;
+  transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;
+}
+.impl-card:hover{transform:translateY(-4px);border-color:rgba(0,191,255,0.22);box-shadow:0 10px 36px rgba(0,191,255,0.1);}
+.impl-card::before{
+  content:attr(data-step);
+  position:absolute;top:-34px;left:50%;transform:translateX(-50%);
+  width:28px;height:28px;
+  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:10px;font-weight:700;color:#fff;
+  box-shadow:0 2px 8px rgba(0,191,255,0.35);z-index:1;
+}
+.impl-week{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;margin-top:6px;}
+.impl-title{font-family:var(--display);font-size:17px;font-weight:800;color:var(--text-dark);margin-bottom:10px;line-height:1.2;}
+.impl-body{color:var(--txt-secondary);font-size:13px;line-height:1.65;margin-bottom:14px;}
+.impl-tags{display:flex;flex-wrap:wrap;gap:6px;}
+
+/* ─── FOOTER ─────────────────────────────────────────── */
+footer{
+  background:var(--navy);
+  border-top:1px solid rgba(0,191,255,0.15);
+}
+.footer-inner{max-width:var(--max-w);margin:0 auto;padding:0 clamp(16px,4vw,60px);}
+.footer-stats-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.footer-stat{
+  padding:clamp(20px,3vw,32px) 20px;text-align:center;
+  border-right:1px solid rgba(255,255,255,0.05);
+}
+.footer-stat:last-child{border-right:none;}
+.footer-stat-num{font-family:var(--display);font-size:clamp(22px,2.5vw,32px);font-weight:800;color:var(--red);margin-bottom:4px;}
+.footer-stat-lbl{font-size:11px;color:rgba(255,255,255,0.55);font-family:var(--mono);letter-spacing:0.5px;}
+.footer-top-band{
+  display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;
+  gap:clamp(24px,4vw,56px);padding:clamp(48px,6vw,72px) 0 clamp(40px,5vw,56px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.footer-brand-logo{
+  font-family:var(--display);font-size:22px;font-weight:800;
+  color:#FFFFFF;margin-bottom:16px;letter-spacing:-0.3px;
+}
+.footer-brand-logo span{color:var(--red);}
+.footer-brand-desc{color:rgba(255,255,255,0.55);font-size:13.5px;line-height:1.75;margin-bottom:18px;}
+.footer-tagline{
+  font-family:var(--mono);font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--red);
+}
+.footer-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.footer-badge{
+  font-family:var(--mono);font-size:9px;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 10px;border-radius:4px;
+  border:1px solid rgba(0,191,255,0.3);color:rgba(255,255,255,0.6);
+}
+.footer-col-title{
+  font-family:var(--mono);font-size:10px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,0.35);margin-bottom:18px;
+}
+.footer-col{display:flex;flex-direction:column;gap:10px;}
+.footer-col a{
+  color:rgba(255,255,255,0.6);font-size:13.5px;text-decoration:none;
+  transition:color 0.2s;cursor:pointer;
+}
+.footer-col a:hover{color:var(--red);}
+.footer-bottom-bar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px 0;gap:16px;flex-wrap:wrap;
+}
+.footer-bottom-bar p{color:rgba(255,255,255,0.35);font-size:12px;font-family:var(--mono);}
+.footer-bottom-bar p span{color:var(--red);}
+.footer-bottom-links{display:flex;gap:20px;}
+.footer-bottom-links a{color:rgba(255,255,255,0.4);font-size:11px;font-family:var(--mono);text-decoration:none;cursor:pointer;transition:color 0.2s;}
+.footer-bottom-links a:hover{color:var(--red);}
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media(max-width:1100px){
+  .pricing-grid{grid-template-columns:1fr 1fr;}
+  .kpi-row{grid-template-columns:repeat(2,1fr);}
+  .market-kpi{grid-template-columns:1fr 1fr;}
+  .footer-top-band{grid-template-columns:1.5fr 1fr 1fr;}
+}
+@media(max-width:900px){
+  .footer-top-band{grid-template-columns:1fr 1fr;}
+  .process-grid{grid-template-columns:repeat(2,1fr);}
+  .platform-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-stats-strip{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:768px){
+  .nav-links,.nav-right .btn-demo-nav{display:none;}
+  .hamburger{display:flex;}
+  .nav-right{gap:0;}
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-inner>div:last-child{display:none;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .process-grid{grid-template-columns:repeat(2,1fr);}
+  .platform-grid{grid-template-columns:1fr;}
+  .about-grid{grid-template-columns:1fr;}
+  .kpi-row{grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:28px;}
+  .kpi-card{padding:16px 12px;}
+  .charts-grid{grid-template-columns:1fr;gap:16px;margin-bottom:16px;}
+  .chart-card,.chart-card-full{padding:16px;}
+  .chart-card-full{margin-bottom:16px;}
+  .chart-wrap{height:200px;}
+  .chart-wrap-lg{height:260px;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .footer-top-band{grid-template-columns:1fr;}
+  .footer-stats-strip{grid-template-columns:repeat(2,1fr);}
+  .footer-bottom-bar{flex-direction:column;align-items:flex-start;}
+  #page-process [style*="grid-template-columns:1fr 1fr"],
+  #page-faq [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .process-grid{grid-template-columns:1fr;}
+  .kpi-row{grid-template-columns:1fr;}
+  .about-tags{grid-template-columns:1fr;}
+  .chart-wrap{height:180px;}
+  .chart-wrap-lg{height:220px;}
+  .footer-stats-strip{grid-template-columns:1fr;}
+  .footer-stat{border-right:none;border-bottom:1px solid rgba(0,191,255,0.08);}
+}
+@media(max-width:700px){
+  .impl-timeline{grid-template-columns:1fr;gap:0;padding-left:16px;}
+  .impl-timeline::before{display:none;}
+  .impl-step{flex-direction:row;gap:0;align-items:stretch;}
+  .impl-dot-col{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:32px;margin-right:16px;}
+  .impl-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;margin-top:22px;box-shadow:0 0 0 3px rgba(255,255,255,1),0 0 0 5px currentColor;}
+  .impl-dot-red{background:var(--red);color:var(--red);}
+  .impl-dot-blue{background:var(--blue-soft);color:var(--blue-soft);}
+  .impl-line{flex:1;width:2px;background:linear-gradient(180deg,rgba(0,191,255,0.25),rgba(30,58,138,0.15));margin:6px 0;border-radius:2px;}
+  .impl-card{margin:0 0 20px 0;flex:1;}
+  .impl-card::before{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav class="navbar">
+  <a class="nav-logo" href="#" onclick="showPage('home');return false;">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="11" r="4" fill="white" opacity="0.9"/>
+        <path d="M11 2 L11 6 M11 16 L11 20 M2 11 L6 11 M16 11 L20 11" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="11" cy="11" r="8.5" stroke="white" stroke-width="1.2" opacity="0.4"/>
+      </svg>
+    </div>
+    <div class="nav-logo-text">
+      SKU Causality Engine
+      <span>Returns Intelligence</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><button id="nav-home" class="active" onclick="showPage('home')">Home</button></li>
+    <li><button id="nav-about" onclick="showPage('about')">About</button></li>
+    <li><button id="nav-platform" onclick="showPage('platform')">Platform</button></li>
+    <li><button id="nav-market" onclick="showPage('market')">Market</button></li>
+    <li><button id="nav-process" onclick="showPage('process')">Process</button></li>
+    <li><button id="nav-faq" onclick="showPage('faq')">FAQ</button></li>
+    <li><button id="nav-pricing" onclick="showPage('pricing')">Pricing</button></li>
+    <li><button id="nav-contact" onclick="showPage('contact')">Contact</button></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="btn-demo-nav" onclick="showPage('contact')">Request Demo</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button onclick="showPage('home');closeMobile()">Home</button>
+  <button onclick="showPage('about');closeMobile()">About</button>
+  <button onclick="showPage('platform');closeMobile()">Platform</button>
+  <button onclick="showPage('market');closeMobile()">Market</button>
+  <button onclick="showPage('process');closeMobile()">Process</button>
+  <button onclick="showPage('faq');closeMobile()">FAQ</button>
+  <button onclick="showPage('pricing');closeMobile()">Pricing</button>
+  <button onclick="showPage('contact');closeMobile()">Contact</button>
+  <button class="mob-cta" onclick="showPage('contact');closeMobile()">Request Demo →</button>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+
+      <!-- LEFT -->
+      <div>
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          UK's First AI-Powered SKU Causality Engine
+        </div>
+
+        <h1>
+          Stop the <span class="green">£27B</span><br>
+          Returns Crisis. Fix the <span class="green">Why.</span>
+        </h1>
+
+        <div class="hero-rule"></div>
+
+        <p class="hero-body">
+          ReturnSense by SKU Causality Engine Group uses Bayesian AI, NLP, and GAN-powered diagnostics to identify the exact root cause of every product return  giving UK e-commerce brands actionable "Monday Morning" fixes that protect margins in real-time.
+        </p>
+
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="showPage('contact')">Book Platform Demo</button>
+          <button class="btn-secondary" onclick="showPage('platform')">Explore Platform</button>
+        </div>
+
+        <!-- MINI STATS -->
+        <div class="hero-mini-stats">
+          <div class="hero-mini-card">
+            <strong>90%+</strong>
+            <span>Diagnostic Accuracy</span>
+          </div>
+          <div class="hero-mini-card">
+            <strong>5–8%</strong>
+            <span>Return Rate Reduction</span>
+          </div>
+          <div class="hero-mini-card">
+            <strong>&lt;15min</strong>
+            <span>Batch Processing Time</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: DASHBOARD -->
+      <div>
+        <div class="hero-dashboard">
+          <div class="score-card-top">
+            <div>
+              <div class="live-dot-wrap">
+                <div class="live-dot"></div> LIVE DIAGNOSTIC
+              </div>
+              <div class="dashboard-title">SKU Causality Dashboard</div>
+            </div>
+            <span class="risk-badge risk-green"><span class="risk-dot"></span>Active</span>
+          </div>
+
+          <div class="dash-row">
+            <div class="dash-metric">
+              <div class="dash-metric-val">£2.48M</div>
+              <div class="dash-metric-lbl">Incremental Profit</div>
+            </div>
+            <div class="dash-metric">
+              <div class="dash-metric-val">92%</div>
+              <div class="dash-metric-lbl">Prediction Accuracy</div>
+            </div>
+            <div class="dash-metric">
+              <div class="dash-metric-val">+28.7%</div>
+              <div class="dash-metric-lbl">Causal Impact</div>
+            </div>
+          </div>
+
+          <div class="dash-bar-wrap">
+            <div class="dash-bar-label"><span>Promotion Depth</span><span>+23.6%</span></div>
+            <div class="dash-bar-track"><div class="dash-bar-fill" style="width:79%"></div></div>
+          </div>
+          <div class="dash-bar-wrap">
+            <div class="dash-bar-label"><span>Price Discount</span><span>+18.4%</span></div>
+            <div class="dash-bar-track"><div class="dash-bar-fill" style="width:61%"></div></div>
+          </div>
+          <div class="dash-bar-wrap">
+            <div class="dash-bar-label"><span>Assortment Breadth</span><span>+12.7%</span></div>
+            <div class="dash-bar-track"><div class="dash-bar-fill dash-navy-fill" style="width:42%"></div></div>
+          </div>
+          <div class="dash-bar-wrap">
+            <div class="dash-bar-label"><span>Sizing Defect Rate</span><span>−8.3%</span></div>
+            <div class="dash-bar-track"><div class="dash-bar-fill" style="width:28%"></div></div>
+          </div>
+
+          <div class="dash-tag-row">
+            <span class="dash-tag dash-tag-red">Failure Fingerprinting</span>
+            <span class="dash-tag dash-tag-navy">What-If Simulation</span>
+            <span class="dash-tag dash-tag-red">GDPR Compliant</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num"><span>£25.1B</span></div>
+          <div class="stat-lbl">UK non-food returns forecast for 2025</div>
+          <div class="stat-src">UK Retail Data</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">17.5<span>%</span></div>
+          <div class="stat-lbl">World's highest online return rate  UK market</div>
+          <div class="stat-src">Industry Research</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">71<span>%</span></div>
+          <div class="stat-lbl">UK online shoppers are regular returners</div>
+          <div class="stat-src">2024–25 Survey Data</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num"><span>£13.10</span></div>
+          <div class="stat-lbl">Average cost to process a single return</div>
+          <div class="stat-src">UK Logistics Research</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS SECTION -->
+  <section class="section-dark" id="process">
+    <div class="container">
+      <div class="label-tag">How ReturnSense Works</div>
+      <h2 class="section-h2 white">From Vague Return Data To<br>Precise Failure Fingerprints</h2>
+      <div class="section-divider divider-green"></div>
+      <p class="para-dark" style="max-width:760px;">SKU Causality Engine transforms fragmented return reason codes into granular, revenue-prioritised action intelligence through a four-stage AI diagnostic lifecycle.</p>
+
+      <div class="process-grid">
+
+        <!-- Arrow connectors (desktop only) -->
+        <div class="process-arrow" style="left:25%;">›</div>
+        <div class="process-arrow" style="left:50%;">›</div>
+        <div class="process-arrow" style="left:75%;">›</div>
+
+        <!-- Card 1 -->
+        <div class="process-card">
+          <div class="process-step-badge">
+            
+            
+          </div>
+          <div class="process-img-wrap">
+            <img src="sk1.jpg" alt="Data Ingestion">
+          </div>
+          <div class="process-content">
+            <div class="process-step-label">Connect · Step 01</div>
+            <h3>Ingest &amp; Connect</h3>
+            <p>Plug-and-play API connects to Shopify, Magento, and Loop Returns in under 30 minutes. No changes to your existing stack required.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="process-card">
+          <div class="process-step-badge">
+           
+          </div>
+          <div class="process-img-wrap">
+            <img src="sk2.jpg" alt="Causal Analysis">
+          </div>
+          <div class="process-content">
+            <div class="process-step-label">Diagnose · Step 02</div>
+            <h3>Diagnose &amp; Fingerprint</h3>
+            <p>Bayesian networks and deep learning separate overlapping return triggers — sizing defect, batch fault, description mismatch — with 90%+ accuracy.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="process-card">
+          <div class="process-step-badge">
+          
+          </div>
+          <div class="process-img-wrap">
+            <img src="sk3.jpg" alt="Action Lists">
+          </div>
+          <div class="process-content">
+            <div class="process-step-label">Simulate · Step 03</div>
+            <h3>Prioritise &amp; Simulate</h3>
+            <p>The "What-If" module forecasts exact £-value savings per fix. Every Monday, ops teams receive a ranked action list tied to real margin recovery.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="process-card">
+          <div class="process-step-badge">
+           
+          </div>
+          <div class="process-img-wrap">
+            <img src="sk4.jpg" alt="Continuous Learning">
+          </div>
+          <div class="process-content">
+            <div class="process-step-label">Evolve · Step 04</div>
+            <h3>Monitor &amp; Evolve</h3>
+            <p>Persistent issue tracking across batches eliminates recurring defects. GAN-powered synthetic profiles predict new collection risks before they ship.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORM SECTION -->
+  <section class="section-dark" id="platform" style="background:#FFFFFF;">
+    <div class="container">
+      <div class="label-tag">Core Platform Engines</div>
+      <h2 class="section-h2 dark">Three Core Engines.<br>One Intelligent Returns Platform.</h2>
+      <div class="section-divider divider-green"></div>
+      <p class="para-dark" style="max-width:760px;">ReturnSense combines causal AI diagnostics, NLP sentiment analysis, and GAN-based predictive modelling into one scalable SaaS platform built exclusively for UK e-commerce.</p>
+
+      <div class="platform-grid">
+        <div class="platform-card">
+          <div class="platform-img-wrap">
+            <img src="sk5.jpg" alt="Failure Fingerprinting Engine">
+          </div>
+          <div class="inner">
+            <div class="element-badge">Engine 01</div>
+            <h3>Failure Fingerprinting Engine</h3>
+            <p>Identifies the specific "DNA" of why a SKU fails  fabric quality vs. sizing inconsistency vs. digital description error  rather than relying on vague customer codes.</p>
+            <div class="more-text">Uses a hybrid architecture of Bayesian networks and deep learning (DenseNet + Transformer fusion) to decouple overlapping return triggers. Each SKU receives a persistent Failure Fingerprint tracked across seasons and batches.</div>
+            <button class="expand-btn" onclick="toggleCard(this)">Learn More</button>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-img-wrap">
+            <img src="sk6.jpg" alt="NLP Sentiment Layer">
+          </div>
+          <div class="inner">
+            <div class="element-badge">Engine 02</div>
+            <h3>NLP Sentiment Diagnostic Layer</h3>
+            <p>Digests free-text customer feedback, social mentions, and support tickets to capture the "tone" of the return  identifying if a quality issue is an isolated defect or a growing brand-perception risk.</p>
+            <div class="more-text">Validated against 10,000+ historical UK free-text return comments. The NLP layer correctly classifies unstructured complaints into actionable categories such as "loose stitching" vs. "wrong shade" vs. "sizing inconsistency."</div>
+            <button class="expand-btn" onclick="toggleCard(this)">Learn More</button>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-img-wrap">
+            <img src="sk7.jpg" alt="GAN Predictive Engine">
+          </div>
+          <div class="inner">
+            <div class="element-badge">Engine 03</div>
+            <h3>GAN Predictive Modelling</h3>
+            <p>Generates synthetic failure profiles for new collections to solve the "cold start" problem  predicting return risks before a product even ships, with no historical data required.</p>
+            <div class="more-text">Our proprietary GAN-driven data moat generates realistic risk simulations based on silhouette, fabric, and manufacturing metadata. Smaller UK SMEs gain enterprise-grade predictive power without needing millions of data points per item.</div>
+            <button class="expand-btn" onclick="toggleCard(this)">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end page home -->
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: ABOUT
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <div class="label-tag">Our Mission</div>
+          <h2 class="section-h2 green">Transforming the UK Returns Crisis Into a Source of Competitive Advantage</h2>
+          <div class="section-divider divider-green"></div>
+          <p class="about-para">SKU Causality Engine Group (ReturnSense) was born from a critical operational gap in the UK's £27 billion e-commerce returns problem: brands can track <em>what</em> is being returned, but have zero diagnostic tools to understand <em>why</em> specific SKUs fail. The result is repeated inventory errors, wasted logistics spend, and eroding margins  not because the products are poor, but because organisations lack the systems to isolate and fix the true root causes.</p>
+          <p class="about-para">Our platform transforms fragmented return reason codes from a reactive cost into a governed, repeatable diagnostic intelligence system. We don't just count returns  we model the causal "Failure Fingerprint" of every SKU across seasons and batches, creating a permanent operational asset that bridges the gap between the warehouse and the design team.</p>
+          <p class="about-para">Founded by Pendlimadugu Sree Pravallika  an MSc Project Management graduate (Distinction) from the University of the West of Scotland and former Quality Associate at Amazon  ReturnSense encodes Amazon-standard root-cause analysis logic into a SaaS platform built specifically for the 12,000+ UK mid-market fashion and footwear brands currently haemorrhaging margins on avoidable returns.</p>
+          <div class="about-tags">
+            <div class="feature-tag">Failure Fingerprinting Engine</div>
+            <div class="feature-tag">GAN Synthetic Data Pipeline</div>
+            <div class="feature-tag">NLP Sentiment Diagnostic Layer</div>
+            <div class="feature-tag">What-If Revenue Simulation</div>
+            <div class="feature-tag">Persistent Issue Tracking</div>
+            <div class="feature-tag">Zero-Friction Shopify API</div>
+            <div class="feature-tag">UK GDPR · Zero-PII Framework</div>
+            <div class="feature-tag">Cyber Essentials Plus</div>
+          </div>
+        </div>
+        <div>
+          <div class="founder-card">
+            <div class="founder-tag">Founder &amp; CEO</div>
+            <h4>Pendlimadugu Sree Pravallika</h4>
+            <div class="founder-title">CEO · Platform Architect · Root-Cause Intelligence Lead</div>
+            <p>Sree brings a rare combination of high-standard operational experience and academic excellence to ReturnSense. With a Distinction in MSc Project Management from the University of the West of Scotland and extensive experience as a Quality Associate at Amazon, she specialises in root-cause analysis, incident management, and operational efficiency at global scale.</p>
+            <p>Her hands-on experience identifying manufacturing and logistical defects across Amazon's driver support operations directly informed the SKU Causality Engine's diagnostic logic. She personally validated the platform's "Failure Fingerprinting" architecture, ensuring it mirrors the same Amazon-grade quality standards used by global logistics leaders.</p>
+            <button class="btn-primary" onclick="showPage('contact')">Contact Sree →</button>
+          </div>
+          <div class="founder-card">
+            <div class="founder-tag">Growing the Team · Phase 2</div>
+            <h4>Strategic UK Hires</h4>
+            <div class="founder-title">Evidence-Based Recruitment Plan</div>
+            <p>SKU Causality Engine Group is building its core team through a phased, revenue-linked strategy: a Data Scientist (Computer Vision/NLP) to further refine the GAN-based synthetic data engine; an Operations Implementation Lead to manage Pilot-to-Contract conversion; and a Compliance Officer to oversee international data-sharing protocol expansion.</p>
+            <p>All hires are UK-based, aligned with the UK government's Pro-Innovation AI framework. By Year 5, the platform targets 38 UK jobs across technical development, operations, and global commercial functions  creating a world-class returns intelligence capability from the UK.</p>
+            <button class="btn-primary" onclick="showPage('market')">View Market Opportunity →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- end page about -->
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: PLATFORM
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-platform">
+  <section class="section-dark" style="padding-top:clamp(80px,12vw,120px);">
+    <div class="container">
+      <div class="label-tag">The Platform</div>
+      <h2 class="section-h2 white">Every Layer of ReturnSense's Causal Intelligence Architecture</h2>
+      <div class="section-divider divider-green"></div>
+      <p class="para-dark platform-sub">ReturnSense is a cloud-native, API-first SaaS platform built on a modular architecture  React dashboards, Shopify/Magento integration layer, proprietary Bayesian causal data model, and UK GDPR-compliant cloud infrastructure  designed to serve UK mid-market retailers without requiring in-house data science teams.</p>
+
+      <div class="platform-grid">
+        <div class="platform-card">
+          <div class="platform-card-img">
+            <img src="sk8.jpg" alt="Failure Fingerprinting">
+          </div>
+          <div class="inner">
+            <div class="element-badge">Module 01</div>
+            <h3>SKU-Level Failure Fingerprinting</h3>
+            <p>Machine learning models that identify and encode the causal "DNA" of why specific SKUs fail  sizing inconsistency, batch defect, digital description mismatch  and store them as persistent, trackable failure profiles across seasons.</p>
+            <div class="more-text">Each SKU establishes a unique Failure Fingerprint combining return trigger type, batch timestamp, manufacturing source, and customer sentiment score. This methodology is proprietary in its approach to decoupling overlapping causal signals, making the resulting benchmarks highly defensible and difficult to replicate without live UK pilot data.</div>
+            <button class="expand-btn" onclick="toggleCard(this)">Learn More</button>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-card-img">
+            <img src="sk9.jpg" alt="Causal Inference Engine">
+          </div>
+          <div class="inner">
+            <div class="element-badge">Module 02</div>
+            <h3>Decoupled Return Causation Engine</h3>
+            <p>Automatically separates multiple overlapping return triggers using advanced Bayesian networks and deep learning. Moves beyond correlation (how many returns) to actual causality (exactly why this batch is failing).</p>
+            <div class="more-text">Validated at 90%+ accuracy across pilot operational datasets. The engine identifies whether a return is caused by a manufacturing defect, a sizing inconsistency, or a digital description error  in under 15 minutes per weekly batch  making it mission-critical for front-line operations teams.</div>
+            <button class="expand-btn" onclick="toggleCard(this)">Learn More</button>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-card-img">
+            <img src="sk10.jpg" alt="What-If Module">
+          </div>
+          <div class="inner">
+            <div class="element-badge">Module 03</div>
+            <h3>Predictive "What-If" Revenue Module</h3>
+            <p>Enables real-time simulations to predict exactly how return rates and profitability would change if specific product issues are corrected before implementation  tied to a precise pound-value (£) recovery figure.</p>
+            <div class="more-text">Every Monday, the engine delivers a ranked "Top 5 SKUs to Fix" list showing exactly how many pounds in saved returns each action represents. CFOs can approve inventory modifications with data-backed ROI before committing resources  converting return management from a cost to a profit tool.</div>
+            <button class="expand-btn" onclick="toggleCard(this)">Learn More</button>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-card-img">
+            <img src="sk11.jpg" alt="GAN Synthetic Data">
+          </div>
+          <div class="inner">
+            <div class="element-badge">Module 04</div>
+            <h3>GAN-Based Synthetic Data Pipeline</h3>
+            <p>Solves the "cold start" problem for new collections by generating synthetic failure profiles based on historical category metadata  predicting return risks for new SKUs before they even ship.</p>
+            <div class="more-text">One of our most significant innovations. Using Generative Adversarial Networks (GANs) trained on UK retail data, the engine creates realistic risk simulations based on silhouette, fabric, and manufacturing metadata. Competitors have no historical data for new SKUs  we predict it. This establishes a defensible "data moat" that improves accuracy without needing millions of data points per item.</div>
+            <button class="expand-btn" onclick="toggleCard(this)">Learn More</button>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-card-img">
+            <img src="sk12.jpg" alt="NLP Sentiment Layer">
+          </div>
+          <div class="inner">
+            <div class="element-badge">Module 05</div>
+            <h3>NLP-Enriched Sentiment Layer</h3>
+            <p>A federated NLP architecture that processes free-text customer comments, social mentions, and support tickets to continuously improve diagnostic models without sharing sensitive customer PII.</p>
+            <div class="more-text">Sentiment patterns from high-return fashion categories in London can inform diagnostic strategy for footwear brands in Manchester. Provides anonymised, sector-specific benchmarks allowing SMEs to compare return causation rates against UK industry standards  creating collective intelligence that new entrants cannot replicate.</div>
+            <button class="expand-btn" onclick="toggleCard(this)">Learn More</button>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-card-img">
+            <img src="sk13.jpg" alt="Zero-Friction API">
+          </div>
+          <div class="inner">
+            <div class="element-badge">Module 06</div>
+            <h3>Zero-Friction API Integration</h3>
+            <p>A plug-and-play SaaS layer that connects directly to Shopify, Magento, and Loop Returns with sub-15-minute processing latency and zero technical debt for the client's existing stack.</p>
+            <div class="more-text">Human-in-the-Loop Governance ensures that when the engine identifies a high-confidence causality requiring physical intervention (like a batch defect), it triggers an automated alert to the QC or warehouse team for physical verification  maintaining operational precision while preserving trust between AI and human workforce.</div>
+            <button class="expand-btn" onclick="toggleCard(this)">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- end page platform -->
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: MARKET
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-market">
+  <section class="section-dark" style="padding-top:clamp(80px,12vw,120px);">
+    <div class="container">
+      <div class="label-tag">Market Analysis</div>
+      <h2 class="section-h2 white">A £122M UK TAM. 12,000+ Underserved Brands. No Direct Competition.</h2>
+      <div class="section-divider divider-green"></div>
+      <p class="para-dark" style="max-width:700px;margin-bottom:40px;">The UK presents a structurally underserved market for ReturnSense. With 12,000+ mid-market fashion brands facing the world's highest return rates and no existing solution offering SKU-level causal diagnostics, the demand for returns intelligence is both urgent and commercially validated.</p>
+
+      <div class="market-kpi">
+        <div class="mkt-card">
+          <div class="mkt-num">£25.1B</div>
+          <div class="mkt-lbl">UK non-food returns forecast for 2025  creating immense pressure on mid-market brands to shift from "Free Returns" to data-driven profitability</div>
+          <div class="mkt-source">UK Retail Data 2025</div>
+        </div>
+        <div class="mkt-card">
+          <div class="mkt-num">12,000+</div>
+          <div class="mkt-lbl">Active UK online apparel brands in target SAM  fashion, footwear, and homeware  all facing the world's highest return rate of 17.5%</div>
+          <div class="mkt-source">ReturnSense SAM Analysis</div>
+        </div>
+        <div class="mkt-card">
+          <div class="mkt-num">£122M</div>
+          <div class="mkt-lbl">Total Addressable Market across UK retail and logistics landscape  growing as brands pivot from "Free Returns" to data-driven profitability</div>
+          <div class="mkt-source">ReturnSense TAM Model</div>
+        </div>
+      </div>
+
+      <div class="charts-grid">
+        <div class="chart-card">
+          <div class="chart-title">UK Return Causation Categories</div>
+          <div class="chart-sub">Primary causes of product returns by type across UK e-commerce sectors</div>
+          <div class="chart-wrap"><canvas id="chartSector"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Returns Value Gap  SKU-Level Breakdown</div>
+          <div class="chart-sub">Where UK retailers fail to diagnose the true cause of returns</div>
+          <div class="chart-wrap"><canvas id="chartRootCause"></canvas></div>
+        </div>
+      </div>
+
+      <div class="chart-card-full">
+        <div class="chart-title">Competitive Positioning  UK Returns Intelligence Landscape</div>
+        <div class="chart-sub">ReturnSense vs. existing platform categories across key capability dimensions</div>
+        <div class="chart-wrap-lg"><canvas id="chartRadar"></canvas></div>
+      </div>
+
+      <div class="charts-grid">
+        <div class="chart-card">
+          <div class="chart-title">UK E-commerce Returns &amp; Logistics Software Market Growth</div>
+          <div class="chart-sub">Market expansion trajectory  UK logistics software projected to reach £1.8B by 2028</div>
+          <div class="chart-wrap"><canvas id="chartGrowth"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">ReturnSense vs Competitors  Capability Score</div>
+          <div class="chart-sub">Feature coverage comparison across returns diagnostic dimensions</div>
+          <div class="chart-wrap"><canvas id="chartPerf"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- end page market -->
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: PRICING
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-pricing">
+  <section style="background:var(--bg-black);padding:clamp(80px,12vw,120px) 0 clamp(60px,8vw,100px);">
+    <div class="container">
+      <div class="label-tag">Pricing Plans</div>
+      <h2 class="section-h2 green">Enterprise-Grade Returns Intelligence at Mid-Market Pricing</h2>
+      <div class="section-divider divider-green"></div>
+      <p class="para-dark" style="max-width:640px;margin-bottom:48px;">Three subscription tiers designed to scale alongside your brand's order volume and complexity  from basic diagnostic access to full What-If simulation and dedicated ERP integration. All plans include the zero-friction API layer, weekly action lists, and UK GDPR-compliant data architecture. No in-house data scientists required.</p>
+
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-tier">Starter Plan</div>
+          <h3>Basic Diagnostic</h3>
+          <p class="desc">For emerging UK boutique brands beginning their returns intelligence journey  structured causal diagnostics without complexity.</p>
+          <div class="price-amount">£199</div>
+          <div class="price-period">/ month · per organisation</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li><span class="chk">✓</span> Diagnostic access up to 500 orders/month</li>
+            <li><span class="chk">✓</span> Weekly "Monday Morning" action list</li>
+            <li><span class="chk">✓</span> Basic Failure Fingerprinting</li>
+            <li><span class="chk">✓</span> Shopify API integration</li>
+            <li><span class="chk">✓</span> UK GDPR-compliant data storage</li>
+            <li><span class="chk">✓</span> Basic compliance reporting</li>
+          </ul>
+          <button class="price-btn price-btn-outline" onclick="showPage('contact')">Get Started →</button>
+        </div>
+
+        <div class="price-card featured">
+          <div class="price-tier">Pro Plan</div>
+          <h3>Professional Tier</h3>
+          <p class="desc">For growth brands requiring advanced Failure Fingerprinting, Loop Returns integration, and sector-specific diagnostic modules.</p>
+          <div class="price-amount">£399</div>
+          <div class="price-period">/ month · per organisation</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li><span class="chk">✓</span> Everything in Basic Diagnostic</li>
+            <li><span class="chk">✓</span> Up to 2,500 orders/month</li>
+            <li><span class="chk">✓</span> Full Failure Fingerprinting engine</li>
+            <li><span class="chk">✓</span> Loop Returns API integration</li>
+            <li><span class="chk">✓</span> Sector-specific modules (Fashion/Footwear)</li>
+            <li><span class="chk">✓</span> Priority onboarding support</li>
+          </ul>
+          <button class="price-btn price-btn-green" onclick="showPage('contact')">Request Demo →</button>
+        </div>
+
+        <div class="price-card">
+          <div class="price-tier">Enterprise Plan</div>
+          <h3>Enterprise Tier</h3>
+          <p class="desc">For scaled brands requiring custom ERP/WMS integration, unlimited orders, What-If simulation, and 24/7 dedicated support.</p>
+          <div class="price-amount">£599<span style="font-size:20px;font-weight:400">+</span></div>
+          <div class="price-period">/ month · custom pricing available</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li><span class="chk">✓</span> Everything in Professional Tier</li>
+            <li><span class="chk">✓</span> Unlimited order volume</li>
+            <li><span class="chk">✓</span> Full "What-If" revenue simulation</li>
+            <li><span class="chk">✓</span> Custom ERP/WMS API integration</li>
+            <li><span class="chk">✓</span> GAN synthetic profile generation</li>
+            <li><span class="chk">✓</span> 24/7 dedicated support + SLA</li>
+          </ul>
+          <button class="price-btn price-btn-outline" onclick="showPage('contact')">Contact Sales →</button>
+        </div>
+      </div>
+
+      <!-- FAQ PRICING -->
+      <div style="max-width:760px;margin:0 auto;">
+        <div class="label-tag" style="justify-content:center;">Pricing FAQs</div>
+        <h3 style="font-family:var(--display);font-size:clamp(22px,2.5vw,32px);font-weight:800;color:var(--text-dark);text-align:center;margin-bottom:28px;">Common Pricing Questions</h3>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFAQ(this)">
+            <h4>Is ReturnSense more cost-effective than hiring a data science team?</h4>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">A dedicated internal data science team for root-cause analysis can cost upwards of £60,000 per year. ReturnSense starts at £199/month  less than 4% of that cost. Every price point is designed to be self-funding: by identifying just five avoidable SKU returns per week, the platform pays for its own annual subscription through recovered margins.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFAQ(this)">
+            <h4>How quickly will I see ROI from ReturnSense?</h4>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">Pay-back period is typically under 30 days via the "Monday Morning" action lists. The platform's "What-If" simulation module quantifies the exact £-value recovery before you implement any change, so ROI is measurable from day one. Pilot brands have reported a 5–8% reduction in return rates within the first season of use.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFAQ(this)">
+            <h4>Are there add-on modules available separately?</h4>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">Yes. Sector-specific diagnostic modules are available as annual add-ons: Fashion & Footwear Module at £499/year (deep-dive sizing variance and fabric sentiment analysis) and Homewares & Fragile Goods Module at £399/year (packaging failure causality and transit-damage diagnostics). Strategic Returns Audits are also available as one-time professional services at £2,500–£5,000 per audit.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- end page pricing -->
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: CONTACT
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <section style="background:var(--bg-black);padding:clamp(80px,12vw,120px) 0 clamp(60px,8vw,100px);">
+    <div class="container">
+      <div class="label-tag">Get In Touch</div>
+      <h2 class="section-h2 green">Request a Pilot Demo or Margin Discovery Session</h2>
+      <div class="section-divider divider-green"></div>
+
+      <div class="contact-grid">
+        
+        <!-- LEFT INFO -->
+        <div>
+          <p class="para-dark" style="margin-bottom:32px;">
+            As founder and CEO, Sree personally leads every pilot onboarding and is available to walk through the platform, answer technical questions, or explore whether ReturnSense is the right fit for your brand. No sales team. No automated sequences. Just a direct conversation with the person who built it.
+          </p>
+
+          <div class="contact-info-card">
+            <div class="contact-icon">I</div>
+            <div>
+              <h4>Location</h4>
+              <p>London, United Kingdom · UK-first platform, serving brands nationwide and internationally from Year 3.</p>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-icon">II</div>
+            <div>
+              <h4>Email</h4>
+              <p>skucausalityenginegroupuk@outlook.com · Sree personally responds to all demo requests within 24 hours.</p>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-icon">III</div>
+            <div>
+              <h4>Phone</h4>
+              <p>+44 7572 316041 · Available for calls Monday–Friday, 9am–6pm GMT.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT FORM -->
+        <div>
+          
+          <!-- SUCCESS MESSAGE -->
+          <div id="formSuccess" style="display:none;">
+            ✓ Your demo request has been submitted! Sree will be in touch within 24 hours.
+          </div>
+
+          <!-- WEB3FORMS -->
+          <form 
+            action="https://api.web3forms.com/submit" 
+            method="POST"
+            id="contactForm"
+          >
+            
+            <!-- WEB3FORMS ACCESS KEY -->
+            <input 
+              type="hidden" 
+              name="access_key" 
+              value="94c0333b-0591-4ec1-b083-7bd2dab4f654"
+            >
+
+            <!-- EMAIL SUBJECT -->
+            <input 
+              type="hidden" 
+              name="subject" 
+              value="New ReturnSense Demo Request"
+            >
+
+            <!-- REDIRECT -->
+            <input 
+              type="hidden" 
+              name="from_name" 
+              value="ReturnSense Website"
+            >
+
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input 
+                type="text" 
+                name="name"
+                class="form-ctrl" 
+                placeholder="Your name" 
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Brand / Business Name</label>
+              <input 
+                type="text" 
+                name="business"
+                class="form-ctrl" 
+                placeholder="Your brand" 
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input 
+                type="email" 
+                name="email"
+                class="form-ctrl" 
+                placeholder="your@brand.co.uk" 
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Business Sector</label>
+              <select 
+                class="form-ctrl" 
+                name="sector"
+                required
+              >
+                <option value="">Select your sector</option>
+                <option>Fashion &amp; Apparel (Mid-Market)</option>
+                <option>Footwear &amp; Accessories</option>
+                <option>Homewares &amp; Lifestyle</option>
+                <option>3PL / Logistics Provider</option>
+                <option>Manufacturing Consultant</option>
+                <option>Other E-commerce Retailer</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Monthly Order Volume</label>
+              <select 
+                class="form-ctrl" 
+                name="order_volume"
+                required
+              >
+                <option value="">Select order volume</option>
+                <option>Under 500 orders/month</option>
+                <option>500–2,500 orders/month</option>
+                <option>2,500–10,000 orders/month</option>
+                <option>10,000+ orders/month</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Current Returns Challenge</label>
+              <textarea 
+                class="form-ctrl ta"
+                name="message"
+                required 
+                placeholder="High return rates, vague reason codes, inventory ghosts, sizing defects, margin erosion, or ESG compliance concerns..."
+              ></textarea>
+            </div>
+
+            <button class="form-submit" type="submit">
+              Submit Demo Request →
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- end page contact -->
+
+<script>
+  const form = document.getElementById("contactForm");
+  const successMsg = document.getElementById("formSuccess");
+
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      successMsg.style.display = "block";
+      form.reset();
+
+      setTimeout(() => {
+        successMsg.style.display = "none";
+      }, 6000);
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  });
+</script>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: PROCESS
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-process">
+
+  <!-- HERO BAND -->
+  <section style="background:linear-gradient(160deg,#FFFFFF 0%,#F0FAFF 50%,#E6F7FF 100%);padding:clamp(80px,12vw,120px) 0 clamp(60px,8vw,80px);position:relative;overflow:hidden;">
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="label-tag">How It Works</div>
+      <h2 class="section-h2 dark">From Fragmented Return Data<br>to Proprietary <span style="color:var(--red);">Failure Fingerprints</span></h2>
+      <div class="section-divider divider-green"></div>
+      <p class="para-dark" style="max-width:680px;margin-bottom:40px;">ReturnSense operates as a closed-loop diagnostic intelligence lifecycle  ingesting, diagnosing, simulating, and continuously evolving your organisation's SKU-level failure intelligence so the same errors are never repeated. Each phase builds on the last, turning raw return data into a permanent, auditable margin-protection asset.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('contact')">Request a Demo →</button>
+        <button class="btn-secondary" onclick="showPage('platform')">Explore Modules</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP-BY-STEP DEEP DIVE -->
+  <section class="section-dark" style="padding-top:clamp(60px,8vw,96px);">
+    <div class="container">
+      <div class="label-tag">The 6-Phase Diagnostic Lifecycle</div>
+      <h2 class="section-h2 white">A Complete Intelligence Loop  Not Just a Returns Tool</h2>
+      <div class="section-divider divider-green"></div>
+
+      <!-- Phase 1 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,72px);align-items:center;margin-bottom:clamp(56px,8vw,96px);">
+        <div>
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:12px;">Phase 01 · Connect</div>
+          <h3 style="font-family:var(--display);font-size:clamp(22px,2.5vw,32px);font-weight:800;color:var(--text-dark);margin-bottom:16px;line-height:1.2;">Zero-Friction API Integration in Under 30 Minutes</h3>
+          <p style="color:var(--txt-secondary);font-size:15px;line-height:1.8;margin-bottom:18px;">ReturnSense connects to your existing Shopify, Magento, or Loop Returns ecosystem with a plug-and-play API that requires no changes to your existing logistics stack. No IT project. No technical debt. No disruption to current operations.</p>
+          <p style="color:var(--txt-secondary);font-size:15px;line-height:1.8;margin-bottom:24px;">Once connected, the cloud-based adaptive engine processes historical data to provide immediate "Day 1" insights  ensuring a rapid time-to-value for busy operational teams managing hundreds of SKUs simultaneously.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;">
+            <span class="risk-badge risk-green"><span class="risk-dot"></span>Shopify Native</span>
+            <span class="risk-badge risk-blue"><span class="risk-dot"></span>Loop Returns API</span>
+            <span class="risk-badge risk-green"><span class="risk-dot"></span>Sub-30min Setup</span>
+          </div>
+        </div>
+        <div style="width:100%;aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:1px solid rgba(0,191,255,0.12);box-shadow:0 8px 32px rgba(0,191,255,0.08);">
+          <img src="sk14.jpg" alt="Phase 01 – Zero-Friction API Connection" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,72px);align-items:center;margin-bottom:clamp(56px,8vw,96px);">
+        <div style="order:2;">
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:12px;">Phase 02 · Diagnose</div>
+          <h3 style="font-family:var(--display);font-size:clamp(22px,2.5vw,32px);font-weight:800;color:var(--text-dark);margin-bottom:16px;line-height:1.2;">Decoupled Return Causation with 90%+ Accuracy</h3>
+          <p style="color:var(--txt-secondary);font-size:15px;line-height:1.8;margin-bottom:18px;">The Bayesian causal inference engine processes batch data, production timestamps, fabric specs, and free-text customer feedback to determine exactly why specific SKUs are failing  separating a sizing error from a batch defect from a description mismatch in real time.</p>
+          <p style="color:var(--txt-secondary);font-size:15px;line-height:1.8;margin-bottom:24px;">Unlike standard analytics that show return volume, ReturnSense provides causality: "SKU X has a 20% return rate specifically because the shoulder width is 1.5cm off-spec in the Q2 manufacturing batch." That level of precision is what turns a return cost into a solvable operational problem.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;">
+            <span class="risk-badge risk-green"><span class="risk-dot"></span>Bayesian Networks</span>
+            <span class="risk-badge risk-blue"><span class="risk-dot"></span>Deep Learning</span>
+            <span class="risk-badge risk-green"><span class="risk-dot"></span>90%+ Accuracy</span>
+          </div>
+        </div>
+        <div style="order:1;width:100%;aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:1px solid rgba(30,58,138,0.12);box-shadow:0 8px 32px rgba(30,58,138,0.08);">
+          <img src="sk15.jpg" alt="Phase 02 – Causal Diagnosis" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,72px);align-items:center;margin-bottom:clamp(56px,8vw,96px);">
+        <div>
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:12px;">Phase 03 · Simulate</div>
+          <h3 style="font-family:var(--display);font-size:clamp(22px,2.5vw,32px);font-weight:800;color:var(--text-dark);margin-bottom:16px;line-height:1.2;">What-If Revenue Recovery Before You Commit</h3>
+          <p style="color:var(--txt-secondary);font-size:15px;line-height:1.8;margin-bottom:18px;">The "What-If" simulation module enables real-time revenue recovery forecasting: see exactly how many pounds your brand would save by updating a size guide, correcting a product photo, or pulling a defective batch  before making any operational change.</p>
+          <p style="color:var(--txt-secondary);font-size:15px;line-height:1.8;margin-bottom:24px;">Every Monday, operations managers receive a ranked "Top 5 SKUs to Fix" list tied to specific £-value recovery figures. CFOs can approve inventory modifications with data-backed ROI  converting return management from a massive loss-leader into an automated profit-recovery engine.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;">
+            <span class="risk-badge risk-green"><span class="risk-dot"></span>£-Value ROI</span>
+            <span class="risk-badge risk-blue"><span class="risk-dot"></span>Monday Action Lists</span>
+            <span class="risk-badge risk-green"><span class="risk-dot"></span>CFO-Ready Reports</span>
+          </div>
+        </div>
+        <div style="width:100%;aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:1px solid rgba(0,191,255,0.12);box-shadow:0 8px 32px rgba(0,191,255,0.08);">
+          <img src="sk16.jpg" alt="Phase 03 – What-If Simulation" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,72px);align-items:center;margin-bottom:clamp(56px,8vw,96px);">
+        <div style="order:2;">
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:12px;">Phase 04 · Predict</div>
+          <h3 style="font-family:var(--display);font-size:clamp(22px,2.5vw,32px);font-weight:800;color:var(--text-dark);margin-bottom:16px;line-height:1.2;">GAN-Powered Prediction Before Collections Launch</h3>
+          <p style="color:var(--txt-secondary);font-size:15px;line-height:1.8;margin-bottom:18px;">The GAN Synthetic Data Pipeline solves the "cold start" problem: generating synthetic failure profiles for new SKUs based on historical category metadata  predicting return risks before a single item ships. This is one of ReturnSense's most significant competitive differentiators.</p>
+          <p style="color:var(--txt-secondary);font-size:15px;line-height:1.8;margin-bottom:24px;">Competitors like Loop Returns and ZigZag have no data for new collections. ReturnSense predicts it. This proprietary data moat grows with every deployment  generating a self-reinforcing competitive advantage that becomes harder to replicate the longer we operate.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;">
+            <span class="risk-badge risk-green"><span class="risk-dot"></span>GAN Synthesis</span>
+            <span class="risk-badge risk-blue"><span class="risk-dot"></span>Pre-Ship Risk Score</span>
+            <span class="risk-badge risk-green"><span class="risk-dot"></span>Cold Start Solved</span>
+          </div>
+        </div>
+        <div style="order:1;width:100%;aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:1px solid rgba(30,58,138,0.12);box-shadow:0 8px 32px rgba(30,58,138,0.08);">
+          <img src="sk17.jpg" alt="Phase 04 – GAN Prediction" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+
+      <!-- IMPLEMENTATION TIMELINE -->
+      <div class="label-tag">Implementation Timeline</div>
+      <h2 class="section-h2 white">From Sign-Up to First Insights: 30 Days</h2>
+      <div class="section-divider divider-green"></div>
+
+      <div class="impl-timeline">
+        <div class="impl-step">
+          <div class="impl-dot-col">
+            <div class="impl-dot impl-dot-red"></div>
+            <div class="impl-line"></div>
+          </div>
+          <div class="impl-card" data-step="1">
+            <div class="impl-week" style="color:var(--red);">Week 1</div>
+            <div class="impl-title">API Connection &amp; Data Sync</div>
+            <div class="impl-body">Zero-friction Shopify/Loop Returns API handshake. Historical data ingested and anonymised for diagnostic processing.</div>
+            <div class="impl-tags">
+              <span class="risk-badge risk-green"><span class="risk-dot"></span>API Setup</span>
+              <span class="risk-badge risk-blue"><span class="risk-dot"></span>Data Sync</span>
+            </div>
+          </div>
+        </div>
+        <div class="impl-step">
+          <div class="impl-dot-col">
+            <div class="impl-dot impl-dot-blue"></div>
+            <div class="impl-line"></div>
+          </div>
+          <div class="impl-card" data-step="2">
+            <div class="impl-week" style="color:var(--blue-soft);">Week 2</div>
+            <div class="impl-title">Baseline Causal Analysis</div>
+            <div class="impl-body">Bayesian engine processes historical return data. Initial Failure Fingerprints generated for top 50 SKUs by return volume.</div>
+            <div class="impl-tags">
+              <span class="risk-badge risk-green"><span class="risk-dot"></span>Fingerprinting</span>
+              <span class="risk-badge risk-blue"><span class="risk-dot"></span>Root Cause</span>
+            </div>
+          </div>
+        </div>
+        <div class="impl-step">
+          <div class="impl-dot-col">
+            <div class="impl-dot impl-dot-red"></div>
+            <div class="impl-line"></div>
+          </div>
+          <div class="impl-card" data-step="3">
+            <div class="impl-week" style="color:var(--red);">Week 3</div>
+            <div class="impl-title">First Monday Action List</div>
+            <div class="impl-body">First revenue-prioritised action list delivered. Each SKU fix tied to a specific £-value margin recovery figure. What-If simulations activated.</div>
+            <div class="impl-tags">
+              <span class="risk-badge risk-green"><span class="risk-dot"></span>Action List</span>
+              <span class="risk-badge risk-blue"><span class="risk-dot"></span>ROI Metrics</span>
+            </div>
+          </div>
+        </div>
+        <div class="impl-step">
+          <div class="impl-dot-col">
+            <div class="impl-dot impl-dot-blue"></div>
+          </div>
+          <div class="impl-card" data-step="4">
+            <div class="impl-week" style="color:var(--blue-soft);">Week 4</div>
+            <div class="impl-title">GAN Predictive Models Live</div>
+            <div class="impl-body">Synthetic failure profiles generated for upcoming collection. Persistent issue tracking active. Seasonal Strategic Report delivered to design team.</div>
+            <div class="impl-tags">
+              <span class="risk-badge risk-green"><span class="risk-dot"></span>GAN Active</span>
+              <span class="risk-badge risk-blue"><span class="risk-dot"></span>Full Pilot</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div><!-- end page process -->
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: FAQ
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-faq">
+
+  <section style="background:linear-gradient(160deg,#FFFFFF 0%,#F0FAFF 50%,#E6F7FF 100%);padding:clamp(80px,12vw,120px) 0 clamp(60px,8vw,80px);">
+    <div class="container">
+      <div class="label-tag">Frequently Asked Questions</div>
+      <h2 class="section-h2 dark">Everything You Need to Know<br>About <span style="color:var(--red);">ReturnSense</span></h2>
+      <div class="section-divider divider-green"></div>
+      <p class="para-dark" style="max-width:640px;margin-bottom:48px;">Common questions from UK brands, logistics managers, and 3PL partners considering ReturnSense for their returns intelligence strategy.</p>
+    </div>
+  </section>
+
+  <section class="section-dark" style="padding-top:clamp(40px,6vw,60px);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);">
+
+        <div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFAQ(this)">
+              <h4>What exactly does ReturnSense diagnose?</h4>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-body">ReturnSense diagnoses the true root cause of why individual SKUs are being returned  not just how many. It identifies whether a return is caused by a manufacturing batch defect, a sizing inconsistency in a specific factory, an inaccurate product description, or a misleading product photograph. Unlike standard analytics platforms that only show return volume, we show causality with 90%+ accuracy in operational datasets.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFAQ(this)">
+              <h4>How long does integration take?</h4>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-body">The Zero-Friction API connects to Shopify, Magento, or Loop Returns in under 30 minutes. No changes to your existing logistics stack are required, and there is no technical debt. Once connected, the engine processes historical data immediately and delivers the first diagnostic insights on Day 1. The first full "Monday Morning" action list is typically delivered within 7–10 days of connection.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFAQ(this)">
+              <h4>How does ReturnSense handle our customer data and GDPR?</h4>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-body">ReturnSense implements a Zero-PII ("Privacy-by-Design") architecture. The system processes only SKU-level metadata and anonymised return reason codes  it specifically excludes Personal Identifiable Information such as customer names, emails, or addresses. All training data is anonymised and encrypted. The platform is designed for full UK GDPR compliance and is undergoing Cyber Essentials Plus certification. ReturnSense acts as a Data Processor, maintaining a transparent DPA with all retail clients.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFAQ(this)">
+              <h4>What is the "Monday Morning" action list?</h4>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-body">Every Monday, the SKU Causality Engine delivers a ranked list of the top 5 SKUs to fix, showing exactly how many pounds in "saved returns" each action represents. Each recommendation is tied to a specific £-value recovery figure  so operations managers and CFOs can immediately prioritise workload based on bottom-line impact. Lean teams at UK SMEs who don't have time for manual root-cause analysis on thousands of SKUs can act on these lists in minutes rather than days.</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFAQ(this)">
+              <h4>How is ReturnSense different from Loop Returns or ZigZag?</h4>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-body">Loop Returns and ZigZag focus on the logistics of moving the return  label generation, carrier networks, portal experience. They manage the return after it happens. ReturnSense owns the diagnostic layer that identifies why the return happened and how to stop it from recurring. We act as a "Diagnostic Overlay" to Loop: turning their logistical data into manufacturing intelligence. No existing competitor combines SKU-level causal decoupling with GAN-driven predictive simulations for return diagnostics.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFAQ(this)">
+              <h4>What sectors does ReturnSense serve?</h4>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-body">Phase 1 focuses on UK mid-market Fashion and Footwear brands (£500k–£10m annual turnover) where return rates average 27–40% and "bracketing" behaviour is most prevalent. Phase 2 expands to Homewares & Lifestyle brands. Phase 3 introduces international expansion into Germany and Australia  markets with similarly high-return cultures. The Failure Fingerprinting logic is inherently adaptable to any product category sold online.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFAQ(this)">
+              <h4>What is the "What-If" simulation module?</h4>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-body">The What-If module enables real-time revenue recovery forecasting. It allows operations managers to see exactly how much money they would save by updating a size guide, correcting a product photo, or pulling a defective batch  before implementing any change. The simulation architecture links specific operational interventions to forecasted revenue recovery in exact £-values, establishing a unique decision-support tool that no competitor currently offers.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFAQ(this)">
+              <h4>Is ReturnSense available outside London?</h4>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-body">The Phase 1 pilot focuses on UK mid-market brands to build UK-specific failure fingerprint benchmarks. From Year 2, the platform serves all UK regions including Manchester, Birmingham, Bristol, Scotland, Wales, and Northern Ireland. By Year 3, ReturnSense expands to German and Australian markets to capitalise on similar high-bracketing consumer cultures, with multi-currency and regional diagnostic adaptation built into the cloud architecture.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="width:100%;margin-top:40px;aspect-ratio:21/5;border-radius:16px;overflow:hidden;border:1px solid rgba(0,191,255,0.09);box-shadow:0 4px 24px rgba(0,191,255,0.05);">
+        <img src="sk18.jpg" alt="ReturnSense platform and team" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STILL HAVE QUESTIONS CTA -->
+  <section style="background:var(--bg-deep);padding:clamp(56px,7vw,80px) 0;border-top:1px solid rgba(0,191,255,0.08);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,72px);align-items:center;">
+        <div>
+          <div class="label-tag">Still Have Questions?</div>
+          <h2 class="section-h2 dark">Talk Directly to <span style="color:var(--red);">Sree</span></h2>
+          <div class="section-divider divider-green"></div>
+          <p class="para-dark" style="margin-bottom:28px;">As founder and CEO, Sree personally leads every pilot onboarding and is available to walk through the platform, answer technical questions, or explore whether ReturnSense is the right fit for your team. No sales team. No automated sequences. Just a direct conversation with the person who built it  drawing on Amazon-grade quality standards and MSc-level project management expertise.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <button class="btn-primary" onclick="showPage('contact')">Book a Conversation →</button>
+            <button class="btn-secondary" onclick="showPage('pricing')">View Pricing</button>
+          </div>
+        </div>
+        <div style="width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid rgba(0,191,255,0.12);box-shadow:0 8px 32px rgba(0,191,255,0.08);">
+          <img src="sk19.jpg" alt="Sree Pravallika  Founder &amp; CEO, SKU Causality Engine Group" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end page faq -->
+
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-inner">
+
+   
+
+    <div class="footer-top-band">
+      <div>
+        <div class="footer-brand-logo">SKU <span>Causality</span> Engine Group</div>
+        <p class="footer-brand-desc">The UK's first AI-powered SKU Causality Engine  transforming fragmented return data into precise "Failure Fingerprints" through Bayesian causal inference, GAN-powered predictive modelling, and NLP sentiment analysis. Protecting mid-market brand margins in real-time.</p>
+        <div class="footer-tagline">Diagnose · Fingerprint · Simulate · Recover</div>
+        <div class="footer-badges">
+          <span class="footer-badge">UK GDPR Compliant</span>
+          <span class="footer-badge">Zero-PII Framework</span>
+          <span class="footer-badge">Cyber Essentials+</span>
+          <span class="footer-badge">IP Registered</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <div class="footer-col">
+          <a onclick="showPage('platform')">Failure Fingerprinting Engine</a>
+          <a onclick="showPage('platform')">Decoupled Causation Engine</a>
+          <a onclick="showPage('platform')">What-If Revenue Module</a>
+          <a onclick="showPage('platform')">GAN Synthetic Data Pipeline</a>
+          <a onclick="showPage('platform')">NLP Sentiment Layer</a>
+          <a onclick="showPage('platform')">Zero-Friction API Integration</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-col">
+          <a onclick="showPage('about')">About ReturnSense</a>
+          <a onclick="showPage('about')">Founder  Sree Pravallika</a>
+          <a onclick="showPage('process')">How It Works (Process)</a>
+          <a onclick="showPage('faq')">FAQ</a>
+          <a onclick="showPage('market')">Market Analysis</a>
+          <a onclick="showPage('pricing')">Pricing &amp; Plans</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Solutions</div>
+        <div class="footer-col">
+          <a onclick="showPage('platform')">Fashion &amp; Apparel Brands</a>
+          <a onclick="showPage('platform')">Footwear Retailers</a>
+          <a onclick="showPage('platform')">Homewares &amp; Lifestyle</a>
+          <a onclick="showPage('platform')">3PL &amp; Logistics Partners</a>
+          <a onclick="showPage('pricing')">Basic Diagnostic Plan</a>
+          <a onclick="showPage('pricing')">Professional Tier Plan</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom-bar">
+      <p>© 2026 <span>SKU Causality Engine Group</span> · London, UK · UK GDPR Compliant · Zero-PII Framework · Innovator Founder Visa · Strictly Confidential</p>
+      <div class="footer-bottom-links">
+        <a onclick="showPage('contact')">Privacy Policy</a>
+        <a onclick="showPage('contact')">Terms of Service</a>
+        <a onclick="showPage('contact')">Pilot Programme</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ═══════════ JAVASCRIPT ═══════════ -->
+<script>
+/* ─── PAGE NAV ───────────────────────────────── */
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-links button').forEach(b=>b.classList.remove('active'));
+  const pg=document.getElementById('page-'+name);
+  if(pg){pg.classList.add('active');}
+  const btn=document.getElementById('nav-'+name);
+  if(btn){btn.classList.add('active');}
+  window.scrollTo({top:0,behavior:'instant'});
+  if(name==='market'&&!window.marketChartsLoaded){initMarketCharts();window.marketChartsLoaded=true;}
+}
+
+function toggleCard(btn){
+  const card=btn.closest('.platform-card');
+  card.classList.toggle('open');
+  btn.innerHTML=card.classList.contains('open')?'Show Less':'Learn More';
+}
+
+function toggleFAQ(el){
+  el.parentElement.classList.toggle('open');
+}
+
+function closeMobile(){
+  document.getElementById('mobileNav').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+document.getElementById('hamburger').addEventListener('click',function(){
+  this.classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+
+function handleSubmit(e){
+  e.preventDefault();
+  document.getElementById('formSuccess').style.display='block';
+  e.target.reset();
+}
+
+/* ─── CHART THEME ────────────────────────────── */
+const RED='rgba(0,191,255,1)';
+const RED2='rgba(0,191,255,0.75)';
+const RED3='rgba(0,191,255,0.4)';
+const NAVY='rgba(11,28,62,0.9)';
+const NAVY2='rgba(26,49,102,0.7)';
+const GRID='rgba(0,191,255,0.06)';
+const MUTED='rgba(107,114,128,0.85)';
+
+Chart.defaults.font.family="'IBM Plex Mono', monospace";
+Chart.defaults.font.size=11;
+Chart.defaults.color=MUTED;
+
+/* ─── MARKET CHARTS ──────────────────────────── */
+function initMarketCharts(){
+  // UK Return Causation Categories
+  new Chart(document.getElementById('chartSector').getContext('2d'),{
+    type:'bar',
+    data:{
+      labels:['Sizing Inconsistency','Not as Described','Batch Defect','Packaging Failure','Delivery Damage','Wrong Colour / Photo'],
+      datasets:[{
+        label:'% of UK Returns Caused By',
+        data:[38,24,18,11,9,7],
+        backgroundColor:[RED,RED2,RED3,'rgba(0,191,255,0.25)',NAVY2,NAVY],
+        borderRadius:5,barPercentage:0.6
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:GRID},ticks:{color:MUTED,callback:v=>v+'%'}},y:{grid:{display:false},ticks:{color:MUTED,font:{size:10}}}}}
+  });
+
+  // Returns Diagnostic Gap Breakdown
+  new Chart(document.getElementById('chartRootCause').getContext('2d'),{
+    type:'doughnut',
+    data:{
+      labels:['No Causal Diagnostics (38%)','Vague Reason Codes (30%)','No What-If Simulation (22%)','Inventory Ghost Problem (25%)','No Predictive Modelling (21%)'],
+      datasets:[{
+        data:[38,30,22,25,21],
+        backgroundColor:[RED,RED2,RED3,NAVY2,NAVY],
+        borderColor:['rgba(0,191,255,0.9)','rgba(0,191,255,0.7)','rgba(0,191,255,0.45)','rgba(26,49,102,0.7)','rgba(11,28,62,0.7)'],
+        borderWidth:1.5
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:MUTED,boxWidth:10,padding:10,font:{size:10}}}}}
+  });
+
+  // Radar Competitive
+  new Chart(document.getElementById('chartRadar').getContext('2d'),{
+    type:'radar',
+    data:{
+      labels:['SKU Causal Diagnostics','Failure Fingerprinting','UK Bracketing Intelligence','GAN Predictive Modelling','What-If Revenue Simulation','Zero-PII Privacy Framework'],
+      datasets:[
+        {label:'ReturnSense',data:[5,5,5,5,5,5],backgroundColor:'rgba(0,191,255,0.1)',borderColor:RED,borderWidth:2,pointBackgroundColor:RED},
+        {label:'Loop Returns',data:[1,1,2,1,1,2],backgroundColor:'rgba(26,49,102,0.07)',borderColor:NAVY2,borderWidth:1.5,pointBackgroundColor:NAVY2},
+        {label:'ZigZag Global',data:[1,1,1,1,1,2],backgroundColor:'rgba(107,114,128,0.06)',borderColor:'rgba(107,114,128,0.5)',borderWidth:1.5,pointBackgroundColor:'rgba(107,114,128,0.5)'},
+        {label:'Generic ERP Modules',data:[2,1,1,1,1,2],backgroundColor:'rgba(180,160,180,0.06)',borderColor:'rgba(180,160,180,0.5)',borderWidth:1.5,pointBackgroundColor:'rgba(180,160,180,0.5)'},
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:MUTED,boxWidth:10,padding:14,font:{size:10}}}},scales:{r:{backgroundColor:'rgba(0,191,255,0.01)',grid:{color:GRID},pointLabels:{color:MUTED,font:{size:10}},ticks:{display:false},min:0,max:5}}}
+  });
+
+  // UK Logistics Market Growth
+  new Chart(document.getElementById('chartGrowth').getContext('2d'),{
+    type:'bar',
+    data:{
+      labels:['2022','2023','2024','2025','2026','2027','2028'],
+      datasets:[
+        {label:'UK Logistics Software Market (£B)',data:[0.9,1.0,1.1,1.3,1.4,1.6,1.8],backgroundColor:NAVY2,borderRadius:5,barPercentage:0.55},
+        {type:'line',label:'ReturnSense UK Brand Adoption %',data:[null,null,2,8,18,30,45],borderColor:RED,borderWidth:2,yAxisID:'y2',tension:0.4,pointBackgroundColor:RED,fill:false}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:MUTED,boxWidth:10,padding:12,font:{size:10}}}},scales:{x:{grid:{color:GRID},ticks:{color:MUTED}},y:{grid:{color:GRID},ticks:{color:MUTED,callback:v=>'£'+v+'B'}},y2:{position:'right',grid:{display:false},ticks:{color:MUTED,callback:v=>v+'%'}}}}
+  });
+
+  // Competitive Performance
+  new Chart(document.getElementById('chartPerf').getContext('2d'),{
+    type:'bar',
+    data:{
+      labels:['Causal Attribution','Failure Forensics','GAN Prediction','UK Benchmarking','What-If Simulation','GDPR Architecture'],
+      datasets:[
+        {label:'ReturnSense',data:[95,92,97,98,94,99],backgroundColor:RED2,borderRadius:5,barPercentage:0.35},
+        {label:'Existing UK Tools Avg',data:[5,8,5,10,5,55],backgroundColor:NAVY2,borderRadius:5,barPercentage:0.35}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:MUTED,boxWidth:10,padding:14,font:{size:10}}}},scales:{x:{grid:{color:GRID},ticks:{color:MUTED,font:{size:9}}},y:{grid:{color:GRID},ticks:{color:MUTED,callback:v=>v+' pts'}}}}
+  });
+}
+</script>
+</body>
+</html>
