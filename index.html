@@ -99,6 +99,11 @@ img{display:block;max-width:100%;}
 .nav-logo-icon svg{width:22px;height:22px;}
 .nav-logo-text{display:flex;flex-direction:column;line-height:1;}
 .nav-logo-text span{font-size:10px;font-family:var(--mono);font-weight:500;color:var(--txt-dim);letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+.nav-brand-name{
+  font-family:var(--display);font-size:18px;font-weight:800;
+  color:var(--navy);letter-spacing:-0.4px;white-space:nowrap;
+}
+.nav-brand-accent{color:var(--red);}
 
 .nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
 .nav-links li button{
@@ -669,7 +674,8 @@ img{display:block;max-width:100%;}
 .price-btn-green:hover{box-shadow:0 8px 28px rgba(0,191,255,0.4);transform:translateY(-1px);}
 
 /* ─── CONTACT ─────────────────────────────────────────── */
-.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,6vw,80px);align-items:start;}
+.contact-section-wrap{max-width:900px;margin:0 auto;width:100%;}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(24px,4vw,48px);align-items:start;}
 .contact-info-card{
   background:#FFFFFF;border:1px solid rgba(0,191,255,0.1);
   border-radius:16px;padding:28px;margin-bottom:22px;
@@ -839,11 +845,13 @@ footer{
   .process-grid{grid-template-columns:repeat(2,1fr);}
   .platform-grid{grid-template-columns:repeat(2,1fr);}
   .footer-stats-strip{grid-template-columns:repeat(2,1fr);}
+  .contact-grid{grid-template-columns:1fr;}
 }
 @media(max-width:768px){
   .nav-links,.nav-right .btn-demo-nav{display:none;}
   .hamburger{display:flex;}
   .nav-right{gap:0;}
+  .nav-brand-name{font-size:15px;}
   .hero-inner{grid-template-columns:1fr;}
   .hero-inner>div:last-child{display:none;}
   .stats-grid{grid-template-columns:repeat(2,1fr);}
@@ -894,17 +902,7 @@ footer{
 <!-- ═══════════ NAVBAR ═══════════ -->
 <nav class="navbar">
   <a class="nav-logo" href="#" onclick="showPage('home');return false;">
-    <div class="nav-logo-icon">
-      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="11" cy="11" r="4" fill="white" opacity="0.9"/>
-        <path d="M11 2 L11 6 M11 16 L11 20 M2 11 L6 11 M16 11 L20 11" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
-        <circle cx="11" cy="11" r="8.5" stroke="white" stroke-width="1.2" opacity="0.4"/>
-      </svg>
-    </div>
-    <div class="nav-logo-text">
-      SKU Causality Engine
-      <span>Returns Intelligence</span>
-    </div>
+    <div class="nav-brand-name">SKU <span class="nav-brand-accent">Causality</span> Engine Group</div>
   </a>
 
   <ul class="nav-links">
@@ -1513,6 +1511,7 @@ footer{
 <div class="page" id="page-contact">
   <section style="background:var(--bg-black);padding:clamp(80px,12vw,120px) 0 clamp(60px,8vw,100px);">
     <div class="container">
+      <div class="contact-section-wrap">
       <div class="label-tag">Get In Touch</div>
       <h2 class="section-h2 green">Request a Pilot Demo or Margin Discovery Session</h2>
       <div class="section-divider divider-green"></div>
@@ -1668,7 +1667,8 @@ footer{
 
           </form>
         </div>
-      </div>
+      </div><!-- end contact-grid -->
+      </div><!-- end contact-section-wrap -->
     </div>
   </section>
 </div>
